@@ -53,7 +53,7 @@
 <!-- ending of navbar -->
 
 <!-- starting of 1st block -->
-<div class=" block-one">
+<div class="block-one">
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
@@ -72,14 +72,21 @@
                     Share your voice, ignite the spark,<br>
                     In every blog, leave your mark.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Write a Blog</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Edit a Blog</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Delete a Blog</button>
+                    <button type="button" class="btn blog-btn btn-primary btn-lg px-4 me-md-2">
+                        <a href="./create-blog.html" class="btn-link">Write a Blog</a>
+                    </button>
+                    <button type="button" class="btn blog-btn btn-outline-secondary btn-lg px-4">
+                        <a href="./edit-blog.html" class="btn-link">Edit a Blog</a>
+                    </button>
+                    <button type="button" class="btn blog-btn btn-outline-secondary btn-lg px-4">
+                        <a href="./delete-blog.html" class="btn-link">Delete a Blog</a>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-- ending of 1st block -->
 
 <!-- starting of 2nd block -->
@@ -95,8 +102,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                class="rounded-circle border border-white">
+                            
                         </li>
                         <li class="d-flex align-items-center me-3">
                             <svg class="bi me-2" width="1em" height="1em">
@@ -122,8 +128,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                class="rounded-circle border border-white">
+                            
                         </li>
                         <li class="d-flex align-items-center me-3">
                             <svg class="bi me-2" width="1em" height="1em">
@@ -149,8 +154,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                class="rounded-circle border border-white">
+                            
                         </li>
                         <li class="d-flex align-items-center me-3">
                             <svg class="bi me-2" width="1em" height="1em">
@@ -185,8 +189,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                class="rounded-circle border border-white">
+                            
                         </li>
                         <li class="d-flex align-items-center me-3">
                             <svg class="bi me-2" width="1em" height="1em">
@@ -212,8 +215,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                class="rounded-circle border border-white">
+                            
                         </li>
                         <li class="d-flex align-items-center me-3">
                             <svg class="bi me-2" width="1em" height="1em">
@@ -239,8 +241,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                class="rounded-circle border border-white">
+                            
                         </li>
                         <li class="d-flex align-items-center me-3">
                             <svg class="bi me-2" width="1em" height="1em">
@@ -263,8 +264,45 @@
 
 
 <!-- ending of 2nd block -->
-<footer>
 
+
+<footer>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <small class="d-block mb-3 text-muted">© 2024</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     
 </footer>
 <body>
