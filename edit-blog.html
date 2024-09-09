@@ -24,40 +24,6 @@
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>
-
-    <script>
-        const blogId = document.getElementById('blogId').value;
-
-        // Fetch the existing blog data (optional)
-        fetch(`/api/blogs/${blogId}`)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('title').value = data.title;
-                document.getElementById('content').value = data.content;
-            });
-
-        document.getElementById('editBlogForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const title = document.getElementById('title').value;
-            const content = document.getElementById('content').value;
-
-            fetch(`/api/blogs/${blogId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ title, content }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Blog updated successfully!');
-                // Redirect or take action on success
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        });
-    </script>
 </body>
 
 </html>

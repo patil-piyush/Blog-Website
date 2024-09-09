@@ -30,52 +30,6 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('createBlogForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const title = document.getElementById('title').value;
-            const content = document.getElementById('content').value;
-
-            fetch('/api/blogs', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ title, content }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Blog created successfully!');
-                // Optionally refresh the blog list
-                location.reload();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        });
-
-        // Fetch and display blogs dynamically
-        fetch('/api/blogs')
-            .then(response => response.json())
-            .then(data => {
-                const blogList = document.getElementById('blogList');
-                data.forEach(blog => {
-                    const blogCard = `
-                        <div class="col">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">${blog.title}</h5>
-                                    <p class="card-text">${blog.content.substring(0, 100)}...</p>
-                                    <a href="/view-blog.html?id=${blog.id}" class="btn btn-primary">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    blogList.innerHTML += blogCard;
-                });
-            })
-            .catch(error => console.error('Error:', error));
-    </script>
 </body>
 
 </html>
