@@ -18,7 +18,7 @@ const userSchema = new Schema({
     salt: {
         type: String,
     },
-    pofileImageURL: {
+    profileImageURL: {
         type: String,
         default: "../public/images/default.jpg",
     },
@@ -32,7 +32,7 @@ const userSchema = new Schema({
 
 
 
-userSchema.static("matchPassword", async function(email, password){
+userSchema.static("matchPasswordAndGenerateToken", async function(email, password){
     const user = await User.findOne({email});
     if(!user) throw new Error("User not found!!");
 
@@ -44,7 +44,8 @@ userSchema.static("matchPassword", async function(email, password){
     if(hashedPassword !== userProvidedHash)
         throw new Error("Wrong Password!!");
 
-    return user;
+    const token = generateToken(user);
+    return token;
 });
 
 userSchema.pre('save', function (next) {
