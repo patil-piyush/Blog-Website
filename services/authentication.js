@@ -1,21 +1,19 @@
 const JWT = require('jsonwebtoken');
 
-const secret = process.env.YOUR_SECRET;
-
 function generateToken(user){
     const payload = {
-        id: user.id,
+        _id: user._id,
         email: user.email,
         profileImageURL: user.profileImageURL,
         role: user.role,
     };
 
-    const token = JWT.sign(payload, secret);
+    const token = JWT.sign(payload, process.env.YOUR_SECRET);
     return token;
 };
 
 function validateToken(token){
-    const payload = JWT.verify(token, secret);
+    const payload = JWT.verify(token, process.env.YOUR_SECRET);
     return payload;
 }
 
