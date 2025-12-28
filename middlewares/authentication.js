@@ -1,21 +1,26 @@
-const {validateToken} = require('../services/authentication');
+const { validateToken } = require('../services/authentication');
 
-function checkAuthenticationCookie(cookieName){
-    return (req,res,next) => {
-        const tokenCookieValue = req.cookies[cookieName];
+function requireAdmin(req, res, next) {
+  const token = req.cookies.token;
 
-        if(!tokenCookieValue) return next();
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
-        try {
-            const payLoad = validateToken(tokenCookieValue);
-            req.user = payLoad;
-        } catch (error) {}
+  try {
+    const payload = validateToken(token);
 
-        return next();
-    };
-};
+    if (payload.role !== 'admin') {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
 
+    req.admin = payload;
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+}
 
 module.exports = {
-    checkAuthenticationCookie,
-}
+  requireAdmin,
+};

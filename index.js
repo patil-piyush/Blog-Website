@@ -1,43 +1,39 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
-app.use(express.static('public'));
-const ejs = require('ejs');
-const userRoute = require('./routes/user');
-const blogRoute = require('./routes/blog');
-const { json } = require('body-parser');
 const mongoose = require('mongoose');
-const {checkAuthenticationCookie} = require('./middlewares/authentication')
 const cookieParser = require('cookie-parser');
 
+const adminRoutes = require('./routes/admin');
+const publicRoutes = require('./routes/publicRoutes');
+const commentRoutes = require('./routes/commentRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
+const app = express();
 
-app.set('view engine', 'ejs');
+// DB
+mongoose
+.connect(process.env.MONGO_URL)
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.error(err));
 
-mongoose.connect(process.env.MONGO_URL).then(() => console.log("mongodb connected"));
-
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); 
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(checkAuthenticationCookie("token"));
 
 
+// Routes
+app.use('/api', uploadRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api', publicRoutes);
+app.use('/api', commentRoutes);
 
-app.use('/user',userRoute);
-app.use('/blog',blogRoute);
-
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
-});
-
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
-
-
+// 404 handler
 app.use((req, res) => {
-    res.status(404).render('error');
+  res.status(404).json({ error: 'Route not found' });
 });
 
-
+// Server
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
+});

@@ -1,24 +1,16 @@
-const JWT = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-function generateToken(user){
-    const payload = {
-        _id: user._id,
-        email: user.email,
-        profileImageURL: user.profileImageURL,
-        role: user.role,
-    };
-
-    const token = JWT.sign(payload, process.env.YOUR_SECRET);
-    return token;
-};
-
-function validateToken(token){
-    const payload = JWT.verify(token, process.env.YOUR_SECRET);
-    return payload;
+function generateToken(payload) {
+  return jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: '2h',
+  });
 }
 
+function validateToken(token) {
+  return jwt.verify(token, process.env.JWT_SECRET);
+}
 
 module.exports = {
-    validateToken,
-    generateToken,
-}
+  generateToken,
+  validateToken,
+};
